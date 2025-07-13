@@ -1,0 +1,5 @@
+# Supabase CLI configuration for skincare-app
+# See https://supabase.com/docs/guides/cli/local-development for details
+ 
+[project]
+ref = "ksiljckghmoldevhacfk" 

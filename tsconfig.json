@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@skincare/ui": ["packages/ui"],
+      "@skincare/lib": ["packages/lib"],
+      "@skincare/db": ["packages/db"]
+    }
+  }
+} 

@@ -1,2 +1,5 @@
 mcp.json
 .cursor/
+node_modules/
+*.yaml
+.env.local
