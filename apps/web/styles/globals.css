@@ -397,14 +397,20 @@ p {
 .mb-lg { margin-bottom: var(--spacing-lg); }
 .mb-xl { margin-bottom: var(--spacing-xl); }
 
+.space-y-md > * + * {
+    margin-top: var(--spacing-md);
+}
+
 .text-center { text-align: center; }
 .text-right { text-align: right; }
 
 .flex { display: flex; }
 .items-center { align-items: center; }
 .justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
 .gap-sm { gap: var(--spacing-sm); }
 .gap-md { gap: var(--spacing-md); }
+.gap-lg { gap: var(--spacing-lg); }
 
 /* Section Styling */
 .section {
