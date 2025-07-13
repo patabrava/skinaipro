@@ -63,16 +63,16 @@ Based on the architecture provided, here's a granular step-by-step plan to build
 - [x] **Test:** Components render with correct styling
 
 ### Task 10: Create App Layout
-- [ ] Create `app/layout.tsx` with HTML structure
-- [ ] Add global styles and font imports
-- [ ] Create basic navigation component
-- [ ] **Test:** Layout renders with proper styling
+- [X ] Create `app/layout.tsx` with HTML structure
+- [X ] Add global styles and font imports
+- [ X] Create basic navigation component
+- [ X] **Test:** Layout renders with proper styling
 
 ### Task 11: Create Marketing Page
-- [ ] Create `app/(marketing)/page.tsx` with hero section
-- [ ] Add basic copy about the skincare app
-- [ ] Include sign-up CTA button
-- [ ] **Test:** Marketing page displays correctly
+- [ X] Create `app/(marketing)/page.tsx` with hero section
+- [ x] Add basic copy about the skincare app
+- [ x] Include sign-up CTA button
+- [ x] **Test:** Marketing page displays correctly
 
 ## Phase 4: Onboarding Flow - Part 1
 
