@@ -49,18 +49,18 @@ Based on the architecture provided, here's a granular step-by-step plan to build
 - [x] **Test:** Can create client instances without errors
 
 ### Task 8: Create Basic Auth Components
-- [ ] Create `components/auth/SignInForm.tsx` with email/password
-- [ ] Create `components/auth/SignUpForm.tsx` with email/password
-- [ ] Add basic form validation
-- [ ] **Test:** Forms render and handle input changes
+- [x] Create `components/auth/SignInForm.tsx` with email/password
+- [x] Create `components/auth/SignUpForm.tsx` with email/password
+- [x] Add basic form validation
+- [x] **Test:** Forms render and handle input changes
 
 ## Phase 3: Basic UI Foundation
 
 ### Task 9: Set Up Tailwind & shadcn/ui
-- [ ] Initialize shadcn/ui: `npx shadcn-ui@latest init`
-- [ ] Configure `packages/ui/` with base components
-- [ ] Add Button, Input, Card components
-- [ ] **Test:** Components render with correct styling
+- [x] Initialize shadcn/ui: `npx shadcn-ui@latest init`
+- [x] Configure `packages/ui/` with base components
+- [x] Add Button, Input, Card components
+- [x] **Test:** Components render with correct styling
 
 ### Task 10: Create App Layout
 - [ ] Create `app/layout.tsx` with HTML structure
