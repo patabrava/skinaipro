@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Minimalist UI Style Guide</title>
+    <style>
+        /* CSS Variables - Design Tokens */
+        :root {
+            /* Primary Colors */
+            --primary-bg: #fafafa;
+            --primary-accent: #d4a574;
+            --primary-accent-hover: #c49660;
+            
+            /* Secondary Colors */
+            --text-primary: #2d2d2d;
+            --text-secondary: #666666;
+            --text-tertiary: #999999;
+            --border-light: #e0e0e0;
+            --card-bg: #ffffff;
+            
+            /* Semantic Colors */
+            --success: #4caf50;
+            --warning: #ff9800;
+            --error: #f44336;
+            --info: #2196f3;
+            
+            /* Pastel Data Colors */
+            --chart-green: #a8e6cf;
+            --chart-pink: #ffb3ba;
+            --chart-blue: #b3d9ff;
+            
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            
+            /* Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-neubrutalism: 4px 4px 0px rgba(0, 0, 0, 1);
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease-out;
+            --transition-base: 0.3s ease-out;
+            --transition-slow: 0.5s ease-out;
+        }
+        
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: var(--font-size-base);
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+        
+        .grid {
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        h1 { font-size: var(--font-size-4xl); }
+        h2 { font-size: var(--font-size-3xl); }
+        h3 { font-size: var(--font-size-2xl); }
+        h4 { font-size: var(--font-size-xl); }
+        h5 { font-size: var(--font-size-lg); }
+        h6 { font-size: var(--font-size-base); }
+        
+        p {
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+        
+        .text-primary { color: var(--text-primary); }
+        .text-secondary { color: var(--text-secondary); }
+        .text-tertiary { color: var(--text-tertiary); }
+        
+        .text-xs { font-size: var(--font-size-xs); }
+        .text-sm { font-size: var(--font-size-sm); }
+        .text-lg { font-size: var(--font-size-lg); }
+        .text-xl { font-size: var(--font-size-xl); }
+        
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-base), box-shadow var(--transition-base);
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .card-neubrutalism {
+            background: var(--card-bg);
+            border: 2px solid var(--text-primary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-neubrutalism);
+            transition: transform var(--transition-fast);
+        }
+        
+        .card-neubrutalism:hover {
+            transform: translate(-2px, -2px);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            outline: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary-accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-accent-hover);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-light);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--primary-accent);
+            color: var(--primary-accent);
+        }
+        
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-secondary);
+        }
+        
+        .btn-ghost:hover {
+            background: var(--primary-bg);
+            color: var(--text-primary);
+        }
+        
+        .btn-neubrutalism {
+            background: var(--primary-accent);
+            color: var(--text-primary);
+            border: 2px solid var(--text-primary);
+            box-shadow: 3px 3px 0px var(--text-primary);
+        }
+        
+        .btn-neubrutalism:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px var(--text-primary);
+        }
+        
+        .btn-sm {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            font-size: var(--font-size-xs);
+        }
+        
+        .btn-lg {
+            padding: var(--spacing-lg) var(--spacing-xl);
+            font-size: var(--font-size-lg);
+        }
+        
+        /* Form Elements */
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: var(--font-size-base);
+            background: var(--card-bg);
+            transition: border-color var(--transition-base);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+        }
+        
+        .form-input.error {
+            border-color: var(--error);
+        }
+        
+        .form-input.success {
+            border-color: var(--success);
+        }
+        
+        /* Navigation */
+        .nav-tab {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: var(--radius-full);
+            padding: var(--spacing-xs);
+            box-shadow: var(--shadow-md);
+            gap: var(--spacing-xs);
+        }
+        
+        .nav-tab-item {
+            flex: 1;
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: center;
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+        
+        .nav-tab-item.active {
+            background: var(--primary-accent);
+            color: white;
+        }
+        
+        /* Progress Elements */
+        .progress-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary-accent) 0% 75%, var(--border-light) 75% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .progress-circle::before {
+            content: '';
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            position: absolute;
+        }
+        
+        .progress-text {
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        /* Alerts */
+        .alert {
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            border-left: 4px solid;
+        }
+        
+        .alert-success {
+            background: rgba(76, 175, 80, 0.1);
+            border-left-color: var(--success);
+            color: var(--success);
+        }
+        
+        .alert-warning {
+            background: rgba(255, 152, 0, 0.1);
+            border-left-color: var(--warning);
+            color: var(--warning);
+        }
+        
+        .alert-error {
+            background: rgba(244, 67, 54, 0.1);
+            border-left-color: var(--error);
+            color: var(--error);
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-primary {
+            background: var(--primary-accent);
+            color: white;
+        }
+        
+        .badge-secondary {
+            background: var(--border-light);
+            color: var(--text-secondary);
+        }
+        
+        /* Charts */
+        .chart-donut {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto var(--spacing-sm);
+        }
+        
+        .chart-acne {
+            background: conic-gradient(var(--chart-green) 0% 30%, var(--border-light) 30% 100%);
+        }
+        
+        .chart-dryness {
+            background: conic-gradient(var(--chart-pink) 0% 60%, var(--border-light) 60% 100%);
+        }
+        
+        .chart-moisture {
+            background: conic-gradient(var(--chart-blue) 0% 80%, var(--border-light) 80% 100%);
+        }
+        
+        .chart-donut::before {
+            content: '';
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* Utilities */
+        .mb-sm { margin-bottom: var(--spacing-sm); }
+        .mb-md { margin-bottom: var(--spacing-md); }
+        .mb-lg { margin-bottom: var(--spacing-lg); }
+        .mb-xl { margin-bottom: var(--spacing-xl); }
+        
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-sm { gap: var(--spacing-sm); }
+        .gap-md { gap: var(--spacing-md); }
+        
+        /* Section Styling */
+        .section {
+            margin-bottom: var(--spacing-2xl);
+            padding: var(--spacing-xl);
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .section-title {
+            border-bottom: 2px solid var(--primary-accent);
+            padding-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .component-demo {
+            background: var(--primary-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: var(--font-size-sm);
+            overflow-x: auto;
+            margin: var(--spacing-md) 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--spacing-md);
+            }
+            
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 { font-size: var(--font-size-3xl); }
+            h2 { font-size: var(--font-size-2xl); }
+        }
+        
+        /* Example Components */
+        .skin-health-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+        
+        .skin-health-percentage {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            color: var(--primary-accent);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .routine-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .routine-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-accent);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--font-size-lg);
+        }
+        
+        .product-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-base);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--chart-green), var(--chart-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--font-size-2xl);
+        }
+        
+        .product-info {
+            padding: var(--spacing-lg);
+        }
+        
+        .product-price {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--primary-accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="text-center mb-xl">
+            <h1>Modern Minimalist UI Style Guide</h1>
+            <p class="text-lg">Clean, modern design with Neubrutalism hints - A comprehensive reference for creating world-class interfaces</p>
+        </header>
+
+        <!-- I. Visual Style Section -->
+        <section class="section">
+            <h2 class="section-title">I. Visual Style (UI Elements)</h2>
+            
+            <!-- Color Palette -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">1. Color Palette</h3>
+                <div class="grid grid-3 mb-lg">
+                    <div class="card text-center">
+                        <h4>Primary Colors</h4>
+                        <div style="background: var(--primary-bg); height: 60px; border-radius: var(--radius-md); margin: var(--spacing-md) 0; border: 1px solid var(--border-light);"></div>
+                        <p>Background: #fafafa</p>
+                        <div style="background: var(--primary-accent); height: 60px; border-radius: var(--radius-md); margin: var(--spacing-md) 0;"></div>
+                        <p>Accent: #d4a574</p>
+                    </div>
+                    <div class="card text-center">
+                        <h4>Text Colors</h4>
+                        <div style="background: var(--text-primary); height: 60px; border-radius: var(--radius-md); margin: var(--spacing-md) 0;"></div>
+                        <p>Primary: #2d2d2d</p>
+                        <div style="background: var(--text-secondary); height: 60px; border-radius: var(--radius-md); margin: var(--spacing-md) 0;"></div>
+                        <p>Secondary: #666666</p>
+                    </div>
+                    <div class="card text-center">
+                        <h4>Semantic Colors</h4>
+                        <div style="background: var(--success); height: 40px; border-radius: var(--radius-md); margin: var(--spacing-sm) 0;"></div>
+                        <div style="background: var(--warning); height: 40px; border-radius: var(--radius-md); margin: var(--spacing-sm) 0;"></div>
+                        <div style="background: var(--error); height: 40px; border-radius: var(--radius-md); margin: var(--spacing-sm) 0;"></div>
+                        <div style="background: var(--info); height: 40px; border-radius: var(--radius-md); margin: var(--spacing-sm) 0;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typography -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">2. Typography</h3>
+                <div class="card">
+                    <h1>Heading 1 - 2.25rem</h1>
+                    <h2>Heading 2 - 1.875rem</h2>
+                    <h3>Heading 3 - 1.5rem</h3>
+                    <h4>Heading 4 - 1.25rem</h4>
+                    <h5>Heading 5 - 1.125rem</h5>
+                    <h6>Heading 6 - 1rem</h6>
+                    <p>Regular body text - 1rem with secondary color</p>
+                    <p class="text-sm">Small text - 0.875rem</p>
+                    <p class="text-xs">Extra small text - 0.75rem</p>
+                </div>
+            </div>
+
+            <!-- Spacing & Layout -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">3. Spacing & Layout</h3>
+                <div class="card">
+                    <h4>Spacing Scale</h4>
+                    <div class="flex items-center gap-md mb-md">
+                        <div style="width: 4px; height: 20px; background: var(--primary-accent);"></div>
+                        <span>XS - 0.25rem</span>
+                    </div>
+                    <div class="flex items-center gap-md mb-md">
+                        <div style="width: 8px; height: 20px; background: var(--primary-accent);"></div>
+                        <span>SM - 0.5rem</span>
+                    </div>
+                    <div class="flex items-center gap-md mb-md">
+                        <div style="width: 16px; height: 20px; background: var(--primary-accent);"></div>
+                        <span>MD - 1rem</span>
+                    </div>
+                    <div class="flex items-center gap-md mb-md">
+                        <div style="width: 24px; height: 20px; background: var(--primary-accent);"></div>
+                        <span>LG - 1.5rem</span>
+                    </div>
+                    <div class="flex items-center gap-md mb-md">
+                        <div style="width: 32px; height: 20px; background: var(--primary-accent);"></div>
+                        <span>XL - 2rem</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- II. UI Components Section -->
+        <section class="section">
+            <h2 class="section-title">II. UI Components</h2>
+            
+            <!-- Buttons -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">1. Buttons</h3>
+                <div class="component-demo">
+                    <div class="flex gap-md mb-md">
+                        <button class="btn btn-primary">Primary Button</button>
+                        <button class="btn btn-secondary">Secondary Button</button>
+                        <button class="btn btn-ghost">Ghost Button</button>
+                        <button class="btn btn-neubrutalism">Neubrutalism</button>
+                    </div>
+                    <div class="flex gap-md">
+                        <button class="btn btn-primary btn-sm">Small</button>
+                        <button class="btn btn-primary">Medium</button>
+                        <button class="btn btn-primary btn-lg">Large</button>
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;button class="btn btn-primary"&gt;Primary Button&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary Button&lt;/button&gt;
+&lt;button class="btn btn-ghost"&gt;Ghost Button&lt;/button&gt;
+&lt;button class="btn btn-neubrutalism"&gt;Neubrutalism&lt;/button&gt;
+                </div>
+            </div>
+
+            <!-- Form Elements -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">2. Form Elements</h3>
+                <div class="component-demo">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Enter your password">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Error State</label>
+                        <input type="text" class="form-input error" placeholder="This field has an error">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Success State</label>
+                        <input type="text" class="form-input success" placeholder="This field is valid">
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;div class="form-group"&gt;
+    &lt;label class="form-label"&gt;Email Address&lt;/label&gt;
+    &lt;input type="email" class="form-input" placeholder="Enter your email"&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">3. Navigation</h3>
+                <div class="component-demo">
+                    <div class="nav-tab">
+                        <a href="#" class="nav-tab-item active">🏠 Home</a>
+                        <a href="#" class="nav-tab-item">📊 Analytics</a>
+                        <a href="#" class="nav-tab-item">📋 Plan</a>
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;div class="nav-tab"&gt;
+    &lt;a href="#" class="nav-tab-item active"&gt;🏠 Home&lt;/a&gt;
+    &lt;a href="#" class="nav-tab-item"&gt;📊 Analytics&lt;/a&gt;
+    &lt;a href="#" class="nav-tab-item"&gt;📋 Plan&lt;/a&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">4. Cards</h3>
+                <div class="component-demo">
+                    <div class="grid grid-2 mb-lg">
+                        <div class="card">
+                            <h4>Regular Card</h4>
+                            <p>This is a standard card with subtle shadow and rounded corners.</p>
+                            <button class="btn btn-primary">Action</button>
+                        </div>
+                        <div class="card-neubrutalism">
+                            <h4>Neubrutalism Card</h4>
+                            <p>This card has a bold border and hard shadow for a modern, edgy look.</p>
+                            <button class="btn btn-neubrutalism">Action</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;div class="card"&gt;
+    &lt;h4&gt;Regular Card&lt;/h4&gt;
+    &lt;p&gt;Card content goes here&lt;/p&gt;
+    &lt;button class="btn btn-primary"&gt;Action&lt;/button&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+
+            <!-- Alerts -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">5. Alerts & Notifications</h3>
+                <div class="component-demo">
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> Your skin analysis has been completed successfully.
+                    </div>
+                    <div class="alert alert-warning">
+                        <strong>Warning!</strong> Your skin moisture levels are below optimal range.
+                    </div>
+                    <div class="alert alert-error">
+                        <strong>Error!</strong> Unable to process your skin scan. Please try again.
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;div class="alert alert-success"&gt;
+    &lt;strong&gt;Success!&lt;/strong&gt; Your message here.
+&lt;/div&gt;
+                </div>
+            </div>
+
+            <!-- Badges -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">6. Badges</h3>
+                <div class="component-demo">
+                    <div class="flex gap-md">
+                        <span class="badge badge-primary">New</span>
+                        <span class="badge badge-secondary">Completed</span>
+                        <span class="badge badge-primary">75% Health</span>
+                        <span class="badge badge-secondary">4 Days Ago</span>
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;span class="badge badge-primary"&gt;New&lt;/span&gt;
+&lt;span class="badge badge-secondary"&gt;Completed&lt;/span&gt;
+                </div>
+            </div>
+
+            <!-- Progress Elements -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">7. Progress Elements</h3>
+                <div class="component-demo">
+                    <div class="flex justify-between items-center">
+                        <div class="text-center">
+                            <div class="progress-circle">
+                                <span class="progress-text">75%</span>
+                            </div>
+                            <p class="text-sm">Skin Health</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="chart-donut chart-acne"></div>
+                            <p class="text-sm">Acne: 30%</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="chart-donut chart-dryness"></div>
+                            <p class="text-sm">Dryness: 60%</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="chart-donut chart-moisture"></div>
+                            <p class="text-sm">Moisture: 80%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;div class="progress-circle"&gt;
+    &lt;span class="progress-text"&gt;75%&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="chart-donut chart-acne"&gt;&lt;/div&gt;
+                </div>
+            </div>
+        </section>
+
+        <!-- III. Example App Components -->
+        <section class="section">
+            <h2 class="section-title">III. Example App Components</h2>
+            
+            <!-- Skin Health Dashboard -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">1. Skin Health Dashboard Card</h3>
+                <div class="component-demo">
+                    <div class="skin-health-card">
+                        <h3>Your Skin Health</h3>
+                        <div class="progress-circle" style="margin: var(--spacing-lg) auto;">
+                            <span class="progress-text">75%</span>
+                        </div>
+                        <p class="text-sm text-tertiary">Last scan 4 days ago</p>
+                        <button class="btn btn-primary" style="margin-top: var(--spacing-md);">View Recommendation →</button>
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;div class="skin-health-card"&gt;
+    &lt;h3&gt;Your Skin Health&lt;/h3&gt;
+    &lt;div class="progress-circle"&gt;
+        &lt;span class="progress-text"&gt;75%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class="text-sm text-tertiary"&gt;Last scan 4 days ago&lt;/p&gt;
+    &lt;button class="btn btn-primary"&gt;View Recommendation →&lt;/button&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+
+            <!-- Routine Card -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">2. Daily Routine Card</h3>
+                <div class="component-demo">
+                    <div class="routine-card">
+                        <div class="routine-icon">📅</div>
+                        <div style="flex: 1;">
+                            <h4>Daily Routine</h4>
+                            <p class="text-sm text-secondary">Your personalized skincare routine</p>
+                        </div>
+                        <button class="btn btn-ghost">Read more →</button>
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;div class="routine-card"&gt;
+    &lt;div class="routine-icon"&gt;📅&lt;/div&gt;
+    &lt;div style="flex: 1;"&gt;
+        &lt;h4&gt;Daily Routine&lt;/h4&gt;
+        &lt;p class="text-sm text-secondary"&gt;Description here&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button class="btn btn-ghost"&gt;Read more →&lt;/button&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+
+            <!-- Product Cards -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">3. Product Recommendation Cards</h3>
+                <div class="component-demo">
+                    <div class="grid grid-3">
+                        <div class="product-card">
+                            <div class="product-image">👕</div>
+                            <div class="product-info">
+                                <h4>Men's Hoodie</h4>
+                                <p class="text-sm text-secondary">Comfortable cotton hoodie</p>
+                                <p class="product-price">$49.99</p>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">👚</div>
+                            <div class="product-info">
+                                <h4>Women's Hoodie</h4>
+                                <p class="text-sm text-secondary">Soft and cozy design</p>
+                                <p class="product-price">$45.99</p>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">🧴</div>
+                            <div class="product-info">
+                                <h4>Moisturizer</h4>
+                                <p class="text-sm text-secondary">Hydrating face cream</p>
+                                <p class="product-price">$29.99</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;div class="product-card"&gt;
+    &lt;div class="product-image"&gt;👕&lt;/div&gt;
+    &lt;div class="product-info"&gt;
+        &lt;h4&gt;Product Name&lt;/h4&gt;
+        &lt;p class="text-sm text-secondary"&gt;Description&lt;/p&gt;
+        &lt;p class="product-price"&gt;$49.99&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+        </section>
+
+        <!-- IV. Patterns & Composition -->
+        <section class="section">
+            <h2 class="section-title">IV. Patterns & Composition</h2>
+            
+            <!-- Layout Patterns -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">1. Layout Patterns</h3>
+                <div class="component-demo">
+                    <div class="card">
+                        <h4>Grid Layout Pattern</h4>
+                        <p class="text-sm text-secondary mb-md">Use the grid system for responsive layouts</p>
+                        <div class="grid grid-3 gap-md">
+                            <div style="background: var(--primary-accent); height: 60px; border-radius: var(--radius-md);"></div>
+                            <div style="background: var(--primary-accent); height: 60px; border-radius: var(--radius-md);"></div>
+                            <div style="background: var(--primary-accent); height: 60px; border-radius: var(--radius-md);"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;div class="grid grid-3"&gt;
+    &lt;div&gt;Item 1&lt;/div&gt;
+    &lt;div&gt;Item 2&lt;/div&gt;
+    &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+
+            <!-- Component Composition -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">2. Component Composition</h3>
+                <div class="component-demo">
+                    <div class="card">
+                        <div class="flex justify-between items-center mb-md">
+                            <h4>Hello Sanzida</h4>
+                            <div class="flex gap-sm">
+                                <span class="badge badge-primary">New</span>
+                                <button class="btn btn-ghost btn-sm">⋮</button>
+                            </div>
+                        </div>
+                        <p class="text-sm text-secondary mb-lg">Your skin journey starts here!</p>
+                        
+                        <div class="grid grid-2 gap-md">
+                            <div class="skin-health-card">
+                                <h5>Skin Health</h5>
+                                <div class="progress-circle" style="margin: var(--spacing-md) auto;">
+                                    <span class="progress-text">75%</span>
+                                </div>
+                                <p class="text-xs text-tertiary">Last scan 4 days ago</p>
+                            </div>
+                            
+                            <div>
+                                <h5 class="mb-md">Skin Analysis</h5>
+                                <div class="grid grid-3 gap-sm">
+                                    <div class="text-center">
+                                        <div class="chart-donut chart-acne"></div>
+                                        <p class="text-xs">Acne</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="chart-donut chart-dryness"></div>
+                                        <p class="text-xs">Dryness</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="chart-donut chart-moisture"></div>
+                                        <p class="text-xs">Moisture</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-lg);">View Recommendations →</button>
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;div class="card"&gt;
+    &lt;div class="flex justify-between items-center"&gt;
+        &lt;h4&gt;Hello Sanzida&lt;/h4&gt;
+        &lt;div class="flex gap-sm"&gt;
+            &lt;span class="badge badge-primary"&gt;New&lt;/span&gt;
+            &lt;button class="btn btn-ghost btn-sm"&gt;⋮&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Additional content --&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+        </section>
+
+        <!-- V. Usage Guidelines -->
+        <section class="section">
+            <h2 class="section-title">V. Usage Guidelines</h2>
+            
+            <!-- Design Principles -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">1. Design Principles</h3>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h4>✨ Minimalism</h4>
+                        <p>Use generous whitespace and keep layouts clean and uncluttered. Focus on essential elements only.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎯 Functionality First</h4>
+                        <p>Prioritize usability and clarity over decorative elements. Every component should serve a purpose.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🏗️ Structured Layout</h4>
+                        <p>Use consistent grid systems and alignment. Maintain visual hierarchy through typography and spacing.</p>
+                    </div>
+                    <div class="card">
+                        <h4>⚡ Neubrutalism Hints</h4>
+                        <p>Add subtle bold shadows and flat elements for a contemporary edge, but keep it balanced.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Best Practices -->
+            <div class="mb-xl">
+                <h3 class="mb-lg">2. Best Practices</h3>
+                <div class="card">
+                    <h4>Color Usage</h4>
+                    <ul style="margin-left: var(--spacing-lg); margin-bottom: var(--spacing-md);">
+                        <li>Use the warm yellow accent sparingly for CTAs and highlights</li>
+                        <li>Maintain high contrast for text readability</li>
+                        <li>Stick to the muted, calming palette for backgrounds</li>
+                    </ul>
+                    
+                    <h4>Typography</h4>
+                    <ul style="margin-left: var(--spacing-lg); margin-bottom: var(--spacing-md);">
+                        <li>Establish clear hierarchy with size and weight</li>
+                        <li>Use consistent line height and spacing</li>
+                        <li>Keep body text readable with secondary color</li>
+                    </ul>
+                    
+                    <h4>Spacing</h4>
+                    <ul style="margin-left: var(--spacing-lg); margin-bottom: var(--spacing-md);">
+                        <li>Use the defined spacing scale consistently</li>
+                        <li>Provide generous padding around interactive elements</li>
+                        <li>Create breathing room between sections</li>
+                    </ul>
+                    
+                    <h4>Components</h4>
+                    <ul style="margin-left: var(--spacing-lg);">
+                        <li>Cards should have rounded corners and subtle shadows</li>
+                        <li>Buttons should provide clear visual feedback</li>
+                        <li>Use consistent icon style and sizing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- VI. CSS Variables Reference -->
+        <section class="section">
+            <h2 class="section-title">VI. CSS Variables Reference</h2>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>Colors</h4>
+                    <div class="code-block">
+--primary-bg: #fafafa;
+--primary-accent: #d4a574;
+--text-primary: #2d2d2d;
+--text-secondary: #666666;
+--text-tertiary: #999999;
+--success: #4caf50;
+--warning: #ff9800;
+--error: #f44336;
+--info: #2196f3;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h4>Spacing</h4>
+                    <div class="code-block">
+--spacing-xs: 0.25rem;
+--spacing-sm: 0.5rem;
+--spacing-md: 1rem;
+--spacing-lg: 1.5rem;
+--spacing-xl: 2rem;
+--spacing-2xl: 3rem;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h4>Typography</h4>
+                    <div class="code-block">
+--font-size-xs: 0.75rem;
+--font-size-sm: 0.875rem;
+--font-size-base: 1rem;
+--font-size-lg: 1.125rem;
+--font-size-xl: 1.25rem;
+--font-size-2xl: 1.5rem;
+--font-size-3xl: 1.875rem;
+--font-size-4xl: 2.25rem;
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h4>Shadows & Effects</h4>
+                    <div class="code-block">
+--shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+--shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+--shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+--shadow-neubrutalism: 4px 4px 0px rgba(0,0,0,1);
+--radius-sm: 0.375rem;
+--radius-md: 0.5rem;
+--radius-lg: 0.75rem;
+--radius-xl: 1rem;
+--radius-full: 9999px;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center" style="margin-top: var(--spacing-2xl); padding: var(--spacing-xl); border-top: 1px solid var(--border-light);">
+            <p class="text-sm text-secondary">
+                Modern Minimalist UI Style Guide - Use this as a reference to create clean, functional, and beautiful interfaces.
+            </p>
+            <p class="text-xs text-tertiary" style="margin-top: var(--spacing-sm);">
+                Copy any component code and customize using the CSS variables provided.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
